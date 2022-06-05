@@ -1,9 +1,6 @@
 <template>
-  <button :class="{ primary: primary }">
+  <button :class="buttonClass">
     {{ text }}
-  </button>
-  <button :class="{ primary: primary }" @click="doubleHeight">
-    {{ area }}
   </button>
 </template>
 
@@ -14,26 +11,24 @@ export default {
     text: {
       type: String,
       required: true,
-      default: "Action",
     },
-  },
-  data() {
-    return {
-      primary: true,
-      width: 10,
-      height: 5,
-    };
+    type: {
+      type: String,
+      required: false,
+      default: "primary",
+      validator: function (value) {
+        return ["primary", "secondary"].indexOf(value) !== -1;
+      },
+    },
   },
   computed: {
-    area() {
-      return this.width * this.height;
+    buttonClass() {
+      return {
+        [this.type]: true,
+      };
     },
   },
-  methods: {
-    doubleHeight() {
-      this.height = this.height * 2;
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -44,5 +39,8 @@ button {
 
 .primary {
   @apply text-white border-0 bg-brand-blue-1 hover:shadow-blue;
+}
+.secondary {
+  @apply text-brand-blue-1 bg-transparent hover:bg-brand-blue-2 hover:text-white;
 }
 </style>
