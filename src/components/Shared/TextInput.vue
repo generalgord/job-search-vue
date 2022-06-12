@@ -2,7 +2,7 @@
   <input
     type="text"
     :placeholder="placeholder"
-    :value="value"
+    :value="modelValue"
     class="w-full text-lg font-normal focus:outline-none"
     @input="handleInput"
   />
@@ -17,7 +17,7 @@ export default {
       required: false,
       default: "",
     },
-    value: {
+    modelValue: {
       type: String,
       required: true,
     },
@@ -25,7 +25,7 @@ export default {
   methods: {
     handleInput($event) {
       // this.value = $event.target.value;
-      this.$emit("handleInput", $event.target.value);
+      this.$emit("update:modelValue", $event.target.value);
     },
   },
 };

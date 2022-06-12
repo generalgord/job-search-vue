@@ -7,11 +7,7 @@
     <div class="flex flex-nowrap flex-1 h-full text-base font-light">
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-10">Role</label>
-        <text-input
-          placeholder="Software engineer"
-          :value="role"
-          @handle-input="role = $event"
-        />
+        <text-input v-model="role" placeholder="Software engineer" />
         <!-- <input
           v-model="role"
           type="text"
@@ -25,11 +21,7 @@
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
-        <text-input
-          :value="location"
-          placeholder="İstanbul"
-          @handle-input="location = $event"
-        />
+        <text-input v-model="location" placeholder="İstanbul" />
         <!-- <input
           v-model="location"
           type="text"
@@ -58,14 +50,6 @@ export default {
       role: "",
       location: "",
     };
-  },
-  methods: {
-    updateRole(payload) {
-      this.role = payload;
-    },
-    updateLocation(payload) {
-      this.location = payload;
-    },
   },
 };
 </script>
