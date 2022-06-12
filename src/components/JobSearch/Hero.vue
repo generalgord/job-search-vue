@@ -7,7 +7,13 @@
           <headline />
           <job-search-form />
         </div>
-        <div class="col-start-7 col-span-5"></div>
+        <div class="col-start-7 col-span-5 self-center justify-self-center">
+          <img
+            class="w-80 h-80 object-contain"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/2367px-Vue.js_Logo_2.svg.png"
+            alt="Vue Image"
+          />
+        </div>
         <div class="col-start-12 col-span-1"></div>
       </div>
     </section>
@@ -15,8 +21,8 @@
 </template>
 
 <script>
-import Headline from "@/components/Headline.vue";
-import JobSearchForm from "@/components/JobSearchForm.vue";
+import Headline from "@/components/JobSearch/Headline.vue";
+import JobSearchForm from "@/components/JobSearch/JobSearchForm.vue";
 
 export default {
   name: "Hero",

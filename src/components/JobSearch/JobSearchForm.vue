@@ -6,14 +6,17 @@
 
     <div class="flex flex-nowrap flex-1 h-full text-base font-light">
       <div class="relative flex items-center flex-1 h-full pr-3">
-        <label class="absolute left-0 -top-10"></label>
-        <input
+        <label class="absolute left-0 -top-10">Role</label>
+        <text-input
+          placeholder="Software engineer"
+          @handle-input="updateRole"
+        />
+        <!-- <input
+          v-model="role"
           type="text"
-          :value="role"
           placeholder="Software engineer"
           class="w-full text-lg font-normal focus:outline-none"
-          @input="updateRole"
-        />
+        /> -->
       </div>
       <span
         class="flex items-center h-full px-3 border-l border-r border-brand-gray-3 bg-brand-gray-2"
@@ -21,13 +24,13 @@
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
-        <input
+        <text-input placeholder="İstanbul" @handle-input="updateLocation" />
+        <!-- <input
+          v-model="location"
           type="text"
-          :value="location"
           placeholder="İstanbul"
           class="w-full text-lg font-normal focus:outline-none"
-          @input="updateLocation"
-        />
+        /> -->
       </div>
     </div>
 
@@ -36,12 +39,14 @@
 </template>
 
 <script>
-import ActionButton from "@/components/ActionButton.vue";
+import ActionButton from "@/components/Shared/ActionButton.vue";
+import TextInput from "@/components/Shared/TextInput.vue";
 
 export default {
   name: "JobSearchForm",
   components: {
     ActionButton,
+    TextInput,
   },
   data() {
     return {
@@ -50,11 +55,11 @@ export default {
     };
   },
   methods: {
-    updateRole(e) {
-      this.role = e.target.value;
+    updateRole(payload) {
+      this.role = payload;
     },
-    updateLocation(e) {
-      this.location = e.target.value;
+    updateLocation(payload) {
+      this.location = payload;
     },
   },
 };
