@@ -9,7 +9,8 @@
         <label class="absolute left-0 -top-10">Role</label>
         <text-input
           placeholder="Software engineer"
-          @handle-input="updateRole"
+          :value="role"
+          @handle-input="role = $event"
         />
         <!-- <input
           v-model="role"
@@ -24,7 +25,11 @@
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
-        <text-input placeholder="İstanbul" @handle-input="updateLocation" />
+        <text-input
+          :value="location"
+          placeholder="İstanbul"
+          @handle-input="location = $event"
+        />
         <!-- <input
           v-model="location"
           type="text"
