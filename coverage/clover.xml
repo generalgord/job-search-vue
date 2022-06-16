@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655386687668" clover="3.2.0">
-  <project timestamp="1655386687668" name="All files">
-    <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="8" elements="29" coveredelements="29" complexity="0" loc="19" ncloc="19" packages="4" files="6" classes="6"/>
+<coverage generated="1655408267198" clover="3.2.0">
+  <project timestamp="1655408267198" name="All files">
+    <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7" elements="27" coveredelements="27" complexity="0" loc="18" ncloc="18" packages="4" files="6" classes="6"/>
     <package name="src">
       <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="playground.js" path="C:\Users\amira\source\vue\job-search\src\playground.js">
@@ -14,16 +14,15 @@
       </file>
     </package>
     <package name="src.components.Navigation">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="ProfileImage.vue" path="C:\Users\amira\source\vue\job-search\src\components\Navigation\ProfileImage.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="10" count="2" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
       <file name="Subnav.vue" path="C:\Users\amira\source\vue\job-search\src\components\Navigation\Subnav.vue">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="16" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components.Shared">
