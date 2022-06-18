@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655492477001" clover="3.2.0">
-  <project timestamp="1655492477002" name="All files">
-    <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7" elements="27" coveredelements="27" complexity="0" loc="18" ncloc="18" packages="4" files="6" classes="6"/>
-    <package name="src">
-      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <file name="playground.js" path="C:\Users\amira\source\vue\job-search\src\playground.js">
-        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+<coverage generated="1655557142039" clover="3.2.0">
+  <project timestamp="1655557142040" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6" elements="21" coveredelements="21" complexity="0" loc="15" ncloc="15" packages="4" files="6" classes="6"/>
+    <package name="components.JobResults">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="JobListing.vue" path="C:\Users\amira\source\vue\job-search\src\components\JobResults\JobListing.vue">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Navigation">
+    <package name="components.Navigation">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="ProfileImage.vue" path="C:\Users\amira\source\vue\job-search\src\components\Navigation\ProfileImage.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -25,7 +22,7 @@
         <line num="16" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Shared">
+    <package name="components.Shared">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="ActionButton.vue" path="C:\Users\amira\source\vue\job-search\src\components\Shared\ActionButton.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
@@ -39,7 +36,7 @@
         <line num="29" count="5" type="stmt"/>
       </file>
     </package>
-    <package name="src.utils">
+    <package name="utils">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="nextElementInList.js" path="C:\Users\amira\source\vue\job-search\src\utils\nextElementInList.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
