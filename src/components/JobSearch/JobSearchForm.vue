@@ -1,13 +1,18 @@
 <template>
   <form
     class="flex items-center w-full h-12 mt-14 border border-solid border-brand-gray-3 rounded-3xl"
+    @submit.prevent="searchForJobs"
   >
     <font-awesome-icon :icon="['fas', 'search']" class="ml-4 mr-3" />
 
     <div class="flex flex-nowrap flex-1 h-full text-base font-light">
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-10">Role</label>
-        <text-input v-model="role" placeholder="Software engineer" />
+        <text-input
+          v-model="role"
+          placeholder="Software engineer"
+          data-test="role-input"
+        />
         <!-- <input
           v-model="role"
           type="text"
@@ -21,7 +26,11 @@
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
-        <text-input v-model="location" placeholder="İstanbul" />
+        <text-input
+          v-model="location"
+          placeholder="İstanbul"
+          data-test="location-input"
+        />
         <!-- <input
           v-model="location"
           type="text"
@@ -31,7 +40,12 @@
       </div>
     </div>
 
-    <action-button text="Search" type="secondary" class="rounded-3xl" />
+    <action-button
+      text="Search"
+      type="secondary"
+      class="rounded-3xl"
+      data-test="form-submit-button"
+    />
   </form>
 </template>
 
@@ -50,6 +64,14 @@ export default {
       role: "",
       location: "",
     };
+  },
+  methods: {
+    searchForJobs() {
+      this.$router.push({
+        name: "JobResults",
+        query: { role: this.role, location: this.location },
+      });
+    },
   },
 };
 </script>

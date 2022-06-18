@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655408267198" clover="3.2.0">
-  <project timestamp="1655408267198" name="All files">
+<coverage generated="1655492477001" clover="3.2.0">
+  <project timestamp="1655492477002" name="All files">
     <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7" elements="27" coveredelements="27" complexity="0" loc="18" ncloc="18" packages="4" files="6" classes="6"/>
     <package name="src">
       <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
@@ -29,14 +29,14 @@
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="ActionButton.vue" path="C:\Users\amira\source\vue\job-search\src\components\Shared\ActionButton.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="20" count="6" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
       </file>
       <file name="TextInput.vue" path="C:\Users\amira\source\vue\job-search\src\components\Shared\TextInput.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="29" count="3" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
       </file>
     </package>
     <package name="src.utils">
