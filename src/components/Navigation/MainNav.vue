@@ -64,20 +64,22 @@ export default {
         { text: "Students", url: "/" },
         { text: "Jobs", url: "/jobs/results" },
       ],
-      isLoggedIn: false,
     };
   },
   computed: {
     headerHeightClass() {
       return {
-        "h-16": !this.isLoggedIn,
-        "h-32": this.isLoggedIn,
+        "h-16": !this.$store.state.isLoggedIn,
+        "h-32": this.$store.state.isLoggedIn,
       };
+    },
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
     },
   },
   methods: {
     loginUser() {
-      this.isLoggedIn = true;
+      this.$store.commit("LOGIN_USER");
     },
   },
 };
