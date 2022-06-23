@@ -10,7 +10,7 @@ describe("TextInput", () => {
       },
     });
     const input = wrapper.find("input");
-    console.log(wrapper.emitted());
+    // console.log(wrapper.emitted());
     input.setValue("N");
     input.setValue("NY");
     input.setValue("NYC");
