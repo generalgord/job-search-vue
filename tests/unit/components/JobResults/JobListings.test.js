@@ -10,6 +10,14 @@ describe("JobListings", () => {
     },
   });
 
+  const createStore = (config = {}) => ({
+    state: {
+      jobs: Array(15).fill({}),
+    },
+    dispatch: jest.fn(),
+    ...config,
+  });
+
   const createConfig = ($route, $store) => ({
     global: {
       mocks: {
@@ -22,7 +30,17 @@ describe("JobListings", () => {
     },
   });
 
-  fit("creates a job listing for a maximum of 10 jobs", async () => {
+  describe("when component mounts", () => {
+    it("makes call to to fetch jobs from API", () => {
+      const $route = createRoute();
+      const dispatch = jest.fn();
+      const $store = createStore({ dispatch });
+      shallowMount(JobListings, createConfig($route, $store));
+      expect(dispatch).toHaveBeenCalledWith("FETCH_JOBS");
+    });
+  });
+
+  it("creates a job listing for a maximum of 10 jobs", async () => {
     const queryParams = { page: "1" };
     const $route = createRoute(queryParams);
     const $store = {
