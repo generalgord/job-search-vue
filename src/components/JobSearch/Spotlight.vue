@@ -3,26 +3,38 @@
     <li
       v-for="spotlight in displayedSpotlights"
       :key="spotlight.id"
-      :spotlight="spotlight"
       data-test="spotlight-listing"
-    ></li>
+    >
+      <!-- <spotlight-container :spotlight="spotlight"></spotlight-container> -->
+      <slot
+        :img="spotlight.img"
+        :title="spotlight.title"
+        :description="spotlight.description"
+      ></slot>
+    </li>
   </ul>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import { FETCH_SPOTLIGHTS } from "@/store";
+
+// import SpotlightContainer from "../Shared/SpotlightContainer.vue";
 
 export default {
   name: "Spotlight",
+  // components: { SpotlightContainer },
   computed: {
     displayedSpotlights() {
       return this.spotlights;
     },
-    ...mapState([FETCH_SPOTLIGHTS]),
+    ...mapState(["spotlights"]),
   },
-  mounted() {
-    this.$store.dispatch(FETCH_SPOTLIGHTS);
+  async mounted() {
+    this.FETCH_SPOTLIGHTS();
+  },
+  methods: {
+    ...mapActions([FETCH_SPOTLIGHTS]),
   },
 };
 </script>

@@ -15,6 +15,7 @@ export const state = () => {
   return {
     isLoggedIn: false,
     jobs: [],
+    spotlights: [],
   };
 };
 
@@ -24,6 +25,9 @@ export const mutations = {
   },
   [RECEIVE_JOBS](state, jobs) {
     state.jobs = jobs;
+  },
+  [RECEIVE_SPOTLIGHTS](state, spotlights) {
+    state.spotlights = spotlights;
   },
 };
 
