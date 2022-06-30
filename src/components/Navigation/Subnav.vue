@@ -4,8 +4,10 @@
       <div v-if="$route.name === 'JobResults'" data-test="job-count">
         <font-awesome-icon :icon="['fas', 'search']" class="mr-3" />
         <span>
-          <span class="font-bold text-brand-green-1">1653</span> jobs
-          matched</span
+          <span class="font-bold text-brand-green-1">{{
+            FILTERED_JOBS.length
+          }}</span>
+          jobs matched</span
         >
       </div>
     </div>
@@ -13,8 +15,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+import { FILTERED_JOBS } from "@/store/constants";
+
 export default {
   name: "Subnav",
+  computed: {
+    ...mapGetters([FILTERED_JOBS]),
+  },
 };
 </script>
 

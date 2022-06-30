@@ -17,7 +17,7 @@ describe("getJobs", () => {
 
   it("fetches jobs that candidates can apply to", async () => {
     await getJobs();
-    expect(axios.get).toHaveBeenLastCalledWith("http://myfakeip.com/jobs");
+    expect(axios.get).toHaveBeenCalledWith("http://myfakeip.com/jobs");
   });
 
   it("extracts jobs from response", async () => {

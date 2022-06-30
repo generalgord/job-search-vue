@@ -17,7 +17,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { FETCH_SPOTLIGHTS } from "@/store";
+import { FETCH_SPOTLIGHTS } from "@/store/constants";
 
 // import SpotlightContainer from "../Shared/SpotlightContainer.vue";
 
