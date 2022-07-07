@@ -1,19 +1,18 @@
 import { mount } from "@vue/test-utils";
+import { useRouter } from "vue-router";
+jest.mock("vue-router");
 
 import JobSearchForm from "@/components/JobSearch/JobSearchForm.vue";
 
 describe("JobSearchForm", () => {
   describe("when user submits form", () => {
-    it("directs user to job results page with user's search parameters", () => {
+    it("directs user to job results page with user's search parameters", async () => {
       const push = jest.fn();
-      const $router = { push };
+      useRouter.mockReturnValue({ push });
 
       const wrapper = mount(JobSearchForm, {
         attachTo: document.body,
         global: {
-          mocks: {
-            $router,
-          },
           stubs: {
             FontAwesomeIcon: true,
           },
@@ -21,13 +20,13 @@ describe("JobSearchForm", () => {
       });
 
       const roleInput = wrapper.find("[data-test='role-input']");
-      roleInput.setValue("Vue Developer");
+      await roleInput.setValue("Vue Developer");
 
       const locationInput = wrapper.find("[data-test='location-input']");
-      locationInput.setValue("Ankara");
+      await locationInput.setValue("Ankara");
 
       const submitButton = wrapper.find("[data-test='form-submit-button']");
-      submitButton.trigger("click");
+      await submitButton.trigger("click");
 
       expect(push).toHaveBeenCalledWith({
         name: "JobResults",
