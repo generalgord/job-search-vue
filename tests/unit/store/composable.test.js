@@ -6,6 +6,7 @@ import {
   useUniqueJobTypes,
   useUniqueOrganizations,
   fetchSpotlights,
+  useFetchJobsDispatch,
 } from "@/store/composables";
 
 describe("composables", () => {
@@ -58,6 +59,17 @@ describe("composables", () => {
 
       const result = fetchSpotlights();
       expect(result.value).toEqual([{ id: 1 }]);
+    });
+  });
+
+  describe("useFetchJobsDispatch", () => {
+    it("sends call to fetch jobs from API", () => {
+      const dispatch = jest.fn();
+      useStore.mockReturnValue({
+        dispatch,
+      });
+      useFetchJobsDispatch();
+      expect(dispatch).toHaveBeenCalledWith("FETCH_JOBS");
     });
   });
 });
