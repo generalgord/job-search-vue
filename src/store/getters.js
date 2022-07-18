@@ -2,6 +2,7 @@ import {
   UNIQUE_ORGANIZATIONS,
   UNIQUE_JOB_TYPES,
   FILTERED_JOBS,
+  FILTERED_SPOTLIGHTS,
   INCLUDE_JOB_BY_ORGANIZATION,
   INCLUDE_JOB_BY_JOB_TYPE,
 } from "@/store/constants";
@@ -47,6 +48,9 @@ export const getters = {
     return state.jobs
       .filter((job) => getters.INCLUDE_JOB_BY_JOB_TYPE(job))
       .filter((job) => getters.INCLUDE_JOB_BY_ORGANIZATION(job));
+  },
+  [FILTERED_SPOTLIGHTS](state) {
+    return state.spotlights;
   },
 };
 

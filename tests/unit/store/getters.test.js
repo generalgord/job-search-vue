@@ -93,4 +93,15 @@ describe("getters", () => {
       expect(INCLUDE_JOB_BY_JOB_TYPE).toHaveBeenCalledWith(job);
     });
   });
+  describe("FILTERED_SPOTLIGHTS", () => {
+    it("filters jobs by organization and job type", () => {
+      const spotlight = { id: 1, title: "Some Spot" };
+      const state = {
+        spotlights: [spotlight],
+      };
+
+      const result = getters.FILTERED_SPOTLIGHTS(state);
+      expect(result).toEqual([spotlight]);
+    });
+  });
 });

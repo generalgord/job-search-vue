@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li
-      v-for="spotlight in displayedSpotlights"
+      v-for="spotlight in spotlights"
       :key="spotlight.id"
       data-test="spotlight-listing"
     >
@@ -16,26 +16,40 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import { FETCH_SPOTLIGHTS } from "@/store/constants";
+import { fetchSpotlights } from "@/store/composables";
+import { ref, onMounted } from "vue";
+// import { mapState, mapActions } from "vuex";
+// import { FETCH_SPOTLIGHTS } from "@/store/constants";
 
 // import SpotlightContainer from "../Shared/SpotlightContainer.vue";
 
 export default {
   name: "Spotlight",
-  // components: { SpotlightContainer },
-  computed: {
-    displayedSpotlights() {
-      return this.spotlights;
-    },
-    ...mapState(["spotlights"]),
+  setup() {
+    const spotlights = ref([]);
+
+    const getSpotlights = async () => {
+      spotlights.value = await (await fetchSpotlights()).value;
+      // const spotList = await fetchSpotlights();
+      // spotlights.value = spotList.value;
+    };
+
+    onMounted(getSpotlights);
+
+    return { spotlights };
   },
-  async mounted() {
-    this.FETCH_SPOTLIGHTS();
-  },
-  methods: {
-    ...mapActions([FETCH_SPOTLIGHTS]),
-  },
+  // computed: {
+  //   displayedSpotlights() {
+  //     return this.spotlights;
+  //   },
+  //   ...mapState(["spotlights"]),
+  // },
+  // async mounted() {
+  //   this.FETCH_SPOTLIGHTS();
+  // },
+  // methods: {
+  //   ...mapActions([FETCH_SPOTLIGHTS]),
+  // },
 };
 </script>
 

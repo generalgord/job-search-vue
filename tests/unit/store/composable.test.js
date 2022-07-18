@@ -5,10 +5,11 @@ import {
   useFilteredJobs,
   useUniqueJobTypes,
   useUniqueOrganizations,
+  fetchSpotlights,
 } from "@/store/composables";
 
 describe("composables", () => {
-  describe("useFilterJobs", () => {
+  describe("useFilteredJobs", () => {
     it("retrieves filtered jobs", () => {
       useStore.mockReturnValue({
         getters: {
@@ -44,6 +45,19 @@ describe("composables", () => {
 
       const result = useUniqueOrganizations();
       expect(result.value).toEqual(new Set(["Org1"]));
+    });
+  });
+
+  describe("fetchSpotlights", () => {
+    it("retrieves spotlights", () => {
+      useStore.mockReturnValue({
+        getters: {
+          FETCH_SPOTLIGHTS: [{ id: 1 }],
+        },
+      });
+
+      const result = fetchSpotlights();
+      expect(result.value).toEqual([{ id: 1 }]);
     });
   });
 });
