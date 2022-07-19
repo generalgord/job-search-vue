@@ -9,10 +9,12 @@ import {
   useFetchJobsDispatch,
 } from "@/store/composables";
 
+const useStoreMock = useStore as jest.Mock;
+
 describe("composables", () => {
   describe("useFilteredJobs", () => {
     it("retrieves filtered jobs", () => {
-      useStore.mockReturnValue({
+      useStoreMock.mockReturnValue({
         getters: {
           FILTERED_JOBS: [{ id: 1 }],
         },
@@ -25,7 +27,7 @@ describe("composables", () => {
 
   describe("useUniqueJobTypes", () => {
     it("receives unique job types from store", () => {
-      useStore.mockReturnValue({
+      useStoreMock.mockReturnValue({
         getters: {
           UNIQUE_JOB_TYPES: new Set(["Type1"]),
         },
@@ -38,7 +40,7 @@ describe("composables", () => {
 
   describe("useUniqueOrganizations", () => {
     it("receives unique job types from store", () => {
-      useStore.mockReturnValue({
+      useStoreMock.mockReturnValue({
         getters: {
           UNIQUE_ORGANIZATIONS: new Set(["Org1"]),
         },
@@ -50,14 +52,14 @@ describe("composables", () => {
   });
 
   describe("fetchSpotlights", () => {
-    it("retrieves spotlights", () => {
-      useStore.mockReturnValue({
+    it("retrieves spotlights", async () => {
+      useStoreMock.mockReturnValue({
         getters: {
           FETCH_SPOTLIGHTS: [{ id: 1 }],
         },
       });
 
-      const result = fetchSpotlights();
+      const result = await fetchSpotlights();
       expect(result.value).toEqual([{ id: 1 }]);
     });
   });
@@ -65,7 +67,7 @@ describe("composables", () => {
   describe("useFetchJobsDispatch", () => {
     it("sends call to fetch jobs from API", () => {
       const dispatch = jest.fn();
-      useStore.mockReturnValue({
+      useStoreMock.mockReturnValue({
         dispatch,
       });
       useFetchJobsDispatch();

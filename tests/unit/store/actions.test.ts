@@ -6,10 +6,13 @@ import getSpotlights from "@/api/getSpotlights";
 jest.mock("@/api/getJobs");
 jest.mock("@/api/getSpotlights");
 
+const getJobsMock = getJobs as jest.Mock;
+const getSpotlightsMock = getSpotlights as jest.Mock;
+
 describe("actions", () => {
   describe("FETCH_JOBS", () => {
     beforeEach(() => {
-      getJobs.mockResolvedValue([
+      getJobsMock.mockResolvedValue([
         {
           id: 1,
           title: "Software Developer",
@@ -38,7 +41,7 @@ describe("actions", () => {
 
   describe("FETCH_SPOTLIGHTS", () => {
     beforeEach(() => {
-      getSpotlights.mockResolvedValue([
+      getSpotlightsMock.mockResolvedValue([
         {
           id: 1,
           title: "Spotlight 1",
