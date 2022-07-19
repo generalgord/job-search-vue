@@ -12,7 +12,9 @@ import "@/assets/tailwind.css";
 import router from "@/router";
 import store from "./store";
 
-library.add([faSearch, faAngleDown, faAngleUp]);
+library.add(faSearch);
+library.add(faAngleDown);
+library.add(faAngleUp);
 
 createApp(App)
   .use(store)
