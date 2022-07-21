@@ -43,7 +43,8 @@
     </div>
   </header>
 </template>
-<script scoped>
+<script lang="ts">
+import { defineComponent } from "vue";
 import { mapMutations, mapState } from "vuex";
 
 import ActionButton from "@/components/Shared/ActionButton.vue";
@@ -52,7 +53,7 @@ import Subnav from "@/components/Navigation/Subnav.vue";
 
 import { LOGIN_USER } from "@/store/constants";
 
-export default {
+export default defineComponent({
   name: "MainNav",
   components: {
     ActionButton,
@@ -73,8 +74,8 @@ export default {
   computed: {
     headerHeightClass() {
       return {
-        "h-16": !this.$store.state.isLoggedIn,
-        "h-32": this.$store.state.isLoggedIn,
+        "h-16": !this.isLoggedIn,
+        "h-32": this.isLoggedIn,
       };
     },
     ...mapState(["isLoggedIn"]),
@@ -88,5 +89,5 @@ export default {
     // },
     ...mapMutations([LOGIN_USER]),
   },
-};
+});
 </script>
