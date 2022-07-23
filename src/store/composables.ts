@@ -10,6 +10,8 @@ import {
   FILTERED_JOBS,
   UNIQUE_JOB_TYPES,
   UNIQUE_ORGANIZATIONS,
+  UNIQUE_DEGREES,
+  FETCH_DEGREES,
 } from "@/store/constants";
 import { Job, Spotlight } from "@/api/types";
 
@@ -18,6 +20,11 @@ import { Job, Spotlight } from "@/api/types";
 export const useFilteredJobs = () => {
   const store = useStore(key);
   return computed<Job[]>(() => store.getters[FILTERED_JOBS]);
+};
+
+export const useUniqueDegrees = () => {
+  const store = useStore(key);
+  return computed<Set<string>>(() => store.getters[UNIQUE_DEGREES]);
 };
 
 export const useUniqueJobTypes = () => {
@@ -36,6 +43,11 @@ export const useGetSpotlights = () => {
 };
 
 /** ACTIONS */
+
+export const useFetchDegreesDispatch = async () => {
+  const store = useStore(key);
+  await store.dispatch(FETCH_DEGREES);
+};
 
 export const useFetchJobsDispatch = async () => {
   const store = useStore(key);

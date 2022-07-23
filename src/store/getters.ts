@@ -6,19 +6,23 @@ import {
   INCLUDE_JOB_BY_ORGANIZATION,
   INCLUDE_JOB_BY_JOB_TYPE,
   UNIQUE_DEGREES,
+  INCLUDE_JOB_BY_DEGREE,
 } from "@/store/constants";
 
 import { GlobalState } from "./types";
-import { Job } from "@/api/types";
+import { Degree, Job } from "@/api/types";
 
 interface IncludeJobGetters {
   INCLUDE_JOB_BY_JOB_TYPE: (job: Job) => boolean;
   INCLUDE_JOB_BY_ORGANIZATION: (job: Job) => boolean;
+  INCLUDE_JOB_BY_DEGREE: (job: Job) => boolean;
 }
 
 export const getters = {
   [UNIQUE_DEGREES](state: GlobalState) {
     const uniqueDegrees = new Set<string>();
+    console.log();
+
     state.degrees.forEach((degree) => uniqueDegrees.add(degree.degree));
     return uniqueDegrees;
   },
@@ -32,6 +36,10 @@ export const getters = {
     state.jobs.forEach((job) => uniqueJobTypes.add(job.jobType));
     return uniqueJobTypes;
   },
+  [INCLUDE_JOB_BY_DEGREE]: (state: GlobalState) => (job: Job) => {
+    if (state.selectedDegrees.length === 0) return true;
+    return state.selectedDegrees.includes(job.degree);
+  },
   [INCLUDE_JOB_BY_ORGANIZATION]: (state: GlobalState) => (job: Job) => {
     if (state.selectedOrganizations.length === 0) return true;
     return state.selectedOrganizations.includes(job.organization);
@@ -43,7 +51,8 @@ export const getters = {
   [FILTERED_JOBS](state: GlobalState, getters: IncludeJobGetters) {
     return state.jobs
       .filter((job) => getters.INCLUDE_JOB_BY_JOB_TYPE(job))
-      .filter((job) => getters.INCLUDE_JOB_BY_ORGANIZATION(job));
+      .filter((job) => getters.INCLUDE_JOB_BY_ORGANIZATION(job))
+      .filter((job) => getters.INCLUDE_JOB_BY_DEGREE(job));
   },
   [FILTERED_SPOTLIGHTS](state: GlobalState) {
     return state.spotlights;

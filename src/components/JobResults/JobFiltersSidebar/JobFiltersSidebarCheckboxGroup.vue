@@ -42,7 +42,7 @@ export default defineComponent({
       required: true,
     },
     uniqueValues: {
-      type: Set,
+      type: [Array, Set],
       required: true,
     },
     mutation: {

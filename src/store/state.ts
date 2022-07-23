@@ -8,6 +8,7 @@ const state = (): GlobalState => {
     degrees: [],
     selectedOrganizations: [],
     selectedJobTypes: [],
+    selectedDegrees: [],
   };
 };
 

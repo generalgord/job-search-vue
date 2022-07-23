@@ -16,7 +16,7 @@ describe("state", () => {
     expect(startingState.spotlights).toEqual([]);
   });
 
-  it("stores degrees listings", () => {
+  it("stores degrees that the user would like to filter jobs  by", () => {
     const startingState = state();
     expect(startingState.degrees).toEqual([]);
   });

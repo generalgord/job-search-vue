@@ -22,6 +22,12 @@
         :unique-values="uniqueOrganizations"
         :mutation="ADD_SELECTED_ORGANIZATIONS"
       />
+      <job-filters-sidebar-checkbox-group
+        ref="degrees-filter"
+        header="Degrees"
+        :unique-values="uniqueDegrees"
+        :mutation="ADD_SELECTED_DEGREES"
+      />
     </section>
   </div>
 </template>
@@ -31,10 +37,15 @@ import { defineComponent } from "vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue";
 
-import { useUniqueOrganizations, useUniqueJobTypes } from "@/store/composables";
+import {
+  useUniqueOrganizations,
+  useUniqueJobTypes,
+  useUniqueDegrees,
+} from "@/store/composables";
 import {
   ADD_SELECTED_ORGANIZATIONS,
   ADD_SELECTED_JOB_TYPES,
+  ADD_SELECTED_DEGREES,
 } from "@/store/constants";
 
 export default defineComponent({
@@ -46,12 +57,15 @@ export default defineComponent({
   setup() {
     const uniqueOrganizations = useUniqueOrganizations();
     const uniqueJobTypes = useUniqueJobTypes();
+    const uniqueDegrees = useUniqueDegrees();
 
     return {
       uniqueOrganizations,
       uniqueJobTypes,
+      uniqueDegrees,
       ADD_SELECTED_JOB_TYPES,
       ADD_SELECTED_ORGANIZATIONS,
+      ADD_SELECTED_DEGREES,
     };
   },
 });

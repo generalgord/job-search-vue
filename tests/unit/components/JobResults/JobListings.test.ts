@@ -2,7 +2,11 @@ import { ref } from "vue";
 
 import { shallowMount, flushPromises, RouterLinkStub } from "@vue/test-utils";
 
-import { useFilteredJobs, useFetchJobsDispatch } from "@/store/composables";
+import {
+  useFilteredJobs,
+  useFetchJobsDispatch,
+  useFetchDegreesDispatch,
+} from "@/store/composables";
 jest.mock("@/store/composables");
 
 const useFilteredJobsMock = useFilteredJobs as jest.Mock;
@@ -39,6 +43,7 @@ describe("JobListings", () => {
 
       shallowMount(JobListings, createConfig());
       expect(useFetchJobsDispatch).toHaveBeenCalled();
+      expect(useFetchDegreesDispatch).toHaveBeenCalled();
     });
   });
 
