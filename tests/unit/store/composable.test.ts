@@ -5,8 +5,9 @@ import {
   useFilteredJobs,
   useUniqueJobTypes,
   useUniqueOrganizations,
-  fetchSpotlights,
+  useFetchSpotlightsDispatch,
   useFetchJobsDispatch,
+  useGetSpotlights,
 } from "@/store/composables";
 
 const useStoreMock = useStore as jest.Mock;
@@ -51,19 +52,28 @@ describe("composables", () => {
     });
   });
 
-  describe("fetchSpotlights", () => {
+  describe("useGetSpotlights", () => {
     it("retrieves spotlights", async () => {
       useStoreMock.mockReturnValue({
         getters: {
-          FETCH_SPOTLIGHTS: [{ id: 1 }],
+          FILTERED_SPOTLIGHTS: [{ id: 1 }],
         },
       });
-
-      const result = await fetchSpotlights();
+      const result = useGetSpotlights();
       expect(result.value).toEqual([{ id: 1 }]);
     });
   });
 
+  describe("useFetchSpotlightsDispatch", () => {
+    it("sends call to fetch spotlights from API", () => {
+      const dispatch = jest.fn();
+      useStoreMock.mockReturnValue({
+        dispatch,
+      });
+      useFetchSpotlightsDispatch();
+      expect(dispatch).toHaveBeenCalledWith("FETCH_SPOTLIGHTS");
+    });
+  });
   describe("useFetchJobsDispatch", () => {
     it("sends call to fetch jobs from API", () => {
       const dispatch = jest.fn();

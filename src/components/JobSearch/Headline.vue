@@ -18,7 +18,7 @@ import { defineComponent } from "vue";
 
 interface Data {
   action: string;
-  interval?: number | undefined;
+  interval?: ReturnType<typeof setInterval> | undefined;
 }
 
 interface ActionClasses {

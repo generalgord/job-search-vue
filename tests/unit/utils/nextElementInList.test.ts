@@ -4,7 +4,7 @@ describe("nextElementInList", () => {
   it("locates element in list and return the next element in list", () => {
     const list = ["A", "B", "C", "D", "E"];
     const value = "C";
-    const result = nextElementInlist(list, value);
+    const result = nextElementInlist<string>(list, value);
     expect(result).toBe("D");
   });
 

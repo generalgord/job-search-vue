@@ -63,7 +63,7 @@ describe("MainNav", () => {
           },
         };
         const wrapper = shallowMount(MainNav, createConfig($store));
-        let profileImage = wrapper.find("[data-test='profile-image'");
+        const profileImage = wrapper.find("[data-test='profile-image'");
         expect(profileImage.exists()).toBe(true);
       });
 

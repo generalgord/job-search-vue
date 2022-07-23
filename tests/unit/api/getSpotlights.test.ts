@@ -3,9 +3,11 @@ jest.mock("axios");
 
 import getSpotlights from "@/api/getSpotlights";
 
+const axiosGetMock = axios.get as jest.Mock;
+
 describe("getSpotlights", () => {
   beforeEach(() => {
-    axios.get.mockResolvedValue({
+    axiosGetMock.mockResolvedValue({
       data: [
         {
           id: 1,

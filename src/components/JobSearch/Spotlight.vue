@@ -14,24 +14,23 @@
   </ul>
 </template>
 
-<script>
-import { fetchSpotlights } from "@/store/composables";
-import { ref, onMounted } from "vue";
+<script lang="ts">
+import {
+  useFetchSpotlightsDispatch,
+  useGetSpotlights,
+} from "@/store/composables";
+import { onMounted, defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Spotlight",
   setup() {
-    const spotlights = ref([]);
+    onMounted(useFetchSpotlightsDispatch);
 
-    const getSpotlights = async () => {
-      spotlights.value = await (await fetchSpotlights()).value;
-    };
-
-    onMounted(getSpotlights);
+    const spotlights = useGetSpotlights();
 
     return { spotlights };
   },
-};
+});
 </script>
 
 <style></style>

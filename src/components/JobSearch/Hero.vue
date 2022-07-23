@@ -47,31 +47,19 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
+
 import Headline from "@/components/JobSearch/Headline.vue";
 import JobSearchForm from "@/components/JobSearch/JobSearchForm.vue";
 import Spotlight from "@/components/JobSearch/Spotlight.vue";
 
-export default {
+export default defineComponent({
   name: "Hero",
   components: {
     Headline,
     JobSearchForm,
     Spotlight,
   },
-  beforeCreate() {
-    console.log("Component is about to be created");
-  },
-  created() {
-    console.log("Component has been created");
-  },
-  beforeMount() {
-    console.log("Component is about to be mounted");
-  },
-  mounted() {
-    console.log("Component has been mounted");
-  },
-};
+});
 </script>
-
-<style></style>

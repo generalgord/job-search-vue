@@ -50,26 +50,26 @@
   </li>
 </template>
 
-<script>
-import { computed } from "@vue/runtime-core";
-export default {
+<script lang="ts">
+import { computed, defineComponent, PropType } from "@vue/runtime-core";
+import { Job } from "@/api/types";
+
+export default defineComponent({
   name: "JobListing",
   props: {
     job: {
-      type: Object,
+      type: Object as PropType<Job>,
       requires: true,
+      default: () => {
+        return {};
+      },
     },
   },
   setup(props) {
     const jobPageLink = computed(() => `/jobs/results/${props.job.id}`);
     return { jobPageLink };
   },
-  // computed: {
-  //   jobPageLink() {
-  //     return `/jobs/results/${this.job.id}`;
-  //   },
-  // },
-};
+});
 </script>
 
 <style></style>
