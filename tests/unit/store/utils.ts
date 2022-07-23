@@ -1,4 +1,4 @@
-import { Job, Spotlight } from "@/api/types";
+import { Degree, Job, Spotlight } from "@/api/types";
 import { GlobalState } from "@/store/types";
 
 import state from "@/store/state";
@@ -30,5 +30,11 @@ export const createSpotlight = (
   img: "https://images.unsplash.com/photo-1556075798-4825dfaaf498",
   title: "Cloud Engineering",
   description: "Build fun stuff in the cloud. It's a lot of fun, we promise!",
+  ...config,
+});
+
+export const createDegree = (config: Partial<Degree> = {}): Degree => ({
+  id: 1,
+  degree: "Master's",
   ...config,
 });

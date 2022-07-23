@@ -1,6 +1,8 @@
 import {
+  FETCH_DEGREES,
   FETCH_JOBS,
   FETCH_SPOTLIGHTS,
+  RECEIVE_DEGREES,
   RECEIVE_JOBS,
   RECEIVE_SPOTLIGHTS,
 } from "@/store/constants";
@@ -8,6 +10,7 @@ import {
 import getJobs from "@/api/getJobs";
 import getSpotlights from "@/api/getSpotlights";
 import { Commit } from "vuex";
+import getDegrees from "@/api/getDegrees";
 
 interface Context {
   commit: Commit;
@@ -21,6 +24,10 @@ export const actions = {
   [FETCH_SPOTLIGHTS]: async (context: Context) => {
     const spotlightListings = await getSpotlights();
     context.commit(RECEIVE_SPOTLIGHTS, spotlightListings);
+  },
+  [FETCH_DEGREES]: async (context: Context) => {
+    const degreeListings = await getDegrees();
+    context.commit(RECEIVE_DEGREES, degreeListings);
   },
 };
 

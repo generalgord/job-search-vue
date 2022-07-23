@@ -5,6 +5,7 @@ import {
   FILTERED_SPOTLIGHTS,
   INCLUDE_JOB_BY_ORGANIZATION,
   INCLUDE_JOB_BY_JOB_TYPE,
+  UNIQUE_DEGREES,
 } from "@/store/constants";
 
 import { GlobalState } from "./types";
@@ -16,6 +17,11 @@ interface IncludeJobGetters {
 }
 
 export const getters = {
+  [UNIQUE_DEGREES](state: GlobalState) {
+    const uniqueDegrees = new Set<string>();
+    state.degrees.forEach((degree) => uniqueDegrees.add(degree.degree));
+    return uniqueDegrees;
+  },
   [UNIQUE_ORGANIZATIONS](state: GlobalState) {
     const uniqueOrganizations = new Set<string>();
     state.jobs.forEach((job) => uniqueOrganizations.add(job.organization));

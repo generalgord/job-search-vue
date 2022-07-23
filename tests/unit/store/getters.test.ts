@@ -1,8 +1,21 @@
 import getters from "@/store/getters";
 
-import { createJob, createSpotlight, createState } from "./utils";
+import { createDegree, createJob, createSpotlight, createState } from "./utils";
 
 describe("getters", () => {
+  describe("UNIQUE_DEGREES", () => {
+    it("unique degree values", () => {
+      const degrees = [
+        createDegree({ degree: "Master's" }),
+        createDegree({ degree: "Banchelor's" }),
+        createDegree({ degree: "Master's" }),
+      ];
+      const state = createState({ degrees });
+      const result = getters.UNIQUE_DEGREES(state);
+      expect(result).toEqual(new Set(["Master's", "Banchelor's"]));
+    });
+  });
+
   describe("UNIQUE_ORGANIZATIONS", () => {
     it("finds unique organizations from list of jobs", () => {
       const jobs = [

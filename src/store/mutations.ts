@@ -1,10 +1,11 @@
-import { Job, Spotlight } from "@/api/types";
+import { Degree, Job, Spotlight } from "@/api/types";
 import {
   LOGIN_USER,
   RECEIVE_JOBS,
   RECEIVE_SPOTLIGHTS,
   ADD_SELECTED_ORGANIZATIONS,
   ADD_SELECTED_JOB_TYPES,
+  RECEIVE_DEGREES,
 } from "@/store/constants";
 import { GlobalState } from "./types";
 
@@ -17,6 +18,9 @@ export const mutations = {
   },
   [RECEIVE_SPOTLIGHTS](state: GlobalState, spotlights: Spotlight[]) {
     state.spotlights = spotlights;
+  },
+  [RECEIVE_DEGREES](state: GlobalState, degrees: Degree[]) {
+    state.degrees = degrees;
   },
   [ADD_SELECTED_ORGANIZATIONS](
     state: GlobalState,

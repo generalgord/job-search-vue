@@ -5,6 +5,7 @@ const state = (): GlobalState => {
     isLoggedIn: false,
     jobs: [],
     spotlights: [],
+    degrees: [],
     selectedOrganizations: [],
     selectedJobTypes: [],
   };
