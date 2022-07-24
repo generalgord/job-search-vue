@@ -1,4 +1,4 @@
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 
 import { useStore } from "vuex";
 jest.mock("vuex");
@@ -20,7 +20,6 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
       },
     },
     props: {
-      header: "Some header",
       uniqueValues: new Set(["ValueA", "ValueB"]),
       mutation: "some_mutation",
       ...props,
@@ -28,8 +27,13 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
   });
 
   it("renders unique list of job types for filtering jobs", async () => {
+    useStoreMock.mockReturnValue({ subscribe: jest.fn() });
+
     const props = { uniqueValues: new Set(["ValueA", "ValueB"]) };
-    const wrapper = mount(JobFiltersSidebarCheckboxGroup, createConfig(props));
+    const wrapper = shallowMount(
+      JobFiltersSidebarCheckboxGroup,
+      createConfig(props)
+    );
 
     const clickableArea = wrapper.find("[data-test='clickable-area']");
     await clickableArea.trigger("click");
@@ -44,14 +48,14 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
     it("communicates that user has selected checkbox for value", async () => {
       const commit = jest.fn();
 
-      useStoreMock.mockReturnValue({ commit });
+      useStoreMock.mockReturnValue({ commit, subscribe: jest.fn() });
       useRouterMock.mockReturnValue({ push: jest.fn() });
 
       const props = {
         mutation: "SOME_MUTATION",
         uniqueValues: new Set(["Type1"]),
       };
-      const wrapper = mount(
+      const wrapper = shallowMount(
         JobFiltersSidebarCheckboxGroup,
         createConfig(props)
       );
@@ -66,12 +70,12 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
     });
 
     it("navigates user to job results page to see fresh batch of filtered jobs", async () => {
-      useStoreMock.mockReturnValue({ commit: jest.fn() });
+      useStoreMock.mockReturnValue({ commit: jest.fn(), subscribe: jest.fn() });
       const push = jest.fn();
       useRouterMock.mockReturnValue({ push });
 
       const props = { uniqueValues: new Set(["ValueA", "ValueB"]) };
-      const wrapper = mount(
+      const wrapper = shallowMount(
         JobFiltersSidebarCheckboxGroup,
         createConfig(props)
       );

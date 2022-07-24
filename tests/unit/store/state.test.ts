@@ -30,4 +30,9 @@ describe("state", () => {
     const startingState = state();
     expect(startingState.selectedJobTypes).toEqual([]);
   });
+
+  it("stores user's search term for skill and qualifications", () => {
+    const startingState = state();
+    expect(startingState.skillsSearchTerm).toBe("");
+  });
 });
